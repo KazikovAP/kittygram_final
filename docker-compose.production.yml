@@ -12,19 +12,19 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ./backend/
+    image: kazikovap/kittygram_backend
     env_file: .env
     volumes:
       - static:/backend_static/
       - media:/app/media/
   frontend:
-    build: ./frontend/
+    image: kazikovap/kittygram_frontend
     env_file: .env
     command: cp -r /app/build/. /staticfiles/
     volumes:
       - static:/staticfiles/
   gateway:
-    build: ./nginx/
+    image: kazikovap/kittygram_gateway
     ports:
       - '9000:80'
     volumes:
