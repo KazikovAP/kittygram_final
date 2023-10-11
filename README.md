@@ -1,5 +1,16 @@
+[![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
+[![nodejs](https://img.shields.io/badge/-nodejs-464646?style=flat-square&logo=nodejs)](https://nodejs.org/)
+[![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/)
+[![Django REST Framework](https://img.shields.io/badge/-Django%20REST%20Framework-464646?style=flat-square&logo=Django%20REST%20Framework)](https://www.django-rest-framework.org/)
+[![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-464646?style=flat-square&logo=PostgreSQL)](https://www.postgresql.org/)
+[![Nginx](https://img.shields.io/badge/-NGINX-464646?style=flat-square&logo=NGINX)](https://nginx.org/ru/)
+[![gunicorn](https://img.shields.io/badge/-gunicorn-464646?style=flat-square&logo=gunicorn)](https://gunicorn.org/)
+[![docker](https://img.shields.io/badge/-Docker-464646?style=flat-square&logo=docker)](https://www.docker.com/)
+
 # Kittygram
+
 Kittygram - социальная сеть для обмена фотографиями любимых питомцев.
+
 ## Как пользоваться:
 - Перейдите на сайт https://kazikovkittygram.viewdns.net/
 - Зарегестрируйтесь
@@ -9,9 +20,20 @@ Kittygram - социальная сеть для обмена фотографи
 
 Приятного использования
 
+---
+## Технологии
+* Python 3.9
+* Django 3.2.3
+* Django Rest Framework 3.12.4
+* djoser 2.1.0
+* gunicorn 20.1.0
+* psycopg2-binary 2.9.3
+* Node.js
+
+---
 ## Установка 
 
-1. Клонируйте репозиторий на свой компьютер:
+**1. Клонируйте репозиторий на свой компьютер:**
 
     ```bash
     git clone git@github.com:ShunyaBo/kittygram_final.git
@@ -19,12 +41,12 @@ Kittygram - социальная сеть для обмена фотографи
     ```bash
     cd kittygram
     ```
-2. Создайте файл .env и заполните его своими данными. Перечень данных указан в корневой директории проекта в файле .env.example.
+**2. Создайте файл .env и заполните его своими данными. Перечень данных указан в корневой директории проекта в файле .env.example.**
 
-
+---
 ### Создание Docker-образов
 
-1.  Замените username на ваш логин на DockerHub:
+**1.  Замените username на ваш логин на DockerHub:**
 
     ```bash
     cd frontend
@@ -35,7 +57,7 @@ Kittygram - социальная сеть для обмена фотографи
     docker build -t username/kittygram_gateway . 
     ```
 
-2. Загрузите образы на DockerHub:
+**2. Загрузите образы на DockerHub:**
 
     ```bash
     docker push username/kittygram_frontend
@@ -43,21 +65,22 @@ Kittygram - социальная сеть для обмена фотографи
     docker push username/kittygram_gateway
     ```
 
+---
 ### Деплой на сервере
 
-1. Подключитесь к удаленному серверу
+**1. Подключитесь к удаленному серверу**
 
     ```bash
     ssh -i путь_до_файла_с_SSH_ключом/название_файла_с_SSH_ключом имя_пользователя@ip_адрес_сервера 
     ```
 
-2. Создайте на сервере директорию kittygram через терминал
+**2. Создайте на сервере директорию kittygram через терминал**
 
     ```bash
     mkdir kittygram
     ```
 
-3. Установка docker compose на сервер:
+**3. Установка docker compose на сервер:**
 
     ```bash
     sudo apt update
@@ -67,7 +90,7 @@ Kittygram - социальная сеть для обмена фотографи
     sudo apt-get install docker-compose-plugin
     ```
 
-4. В директорию kittygram/ скопируйте файлы docker-compose.production.yml и .env:
+**4. В директорию kittygram/ скопируйте файлы docker-compose.production.yml и .env:**
 
     ```bash
     scp -i path_to_SSH/SSH_name docker-compose.production.yml username@server_ip:/home/username/kittygram/docker-compose.production.yml
@@ -77,13 +100,13 @@ Kittygram - социальная сеть для обмена фотографи
     * server_ip — IP вашего сервера.
     ```
 
-5. Запустите docker compose в режиме демона:
+**5. Запустите docker compose в режиме демона:**
 
     ```bash
     sudo docker compose -f docker-compose.production.yml up -d
     ```
 
-6. Выполните миграции, соберите статические файлы бэкенда и скопируйте их в /backend_static/static/:
+**6. Выполните миграции, соберите статические файлы бэкенда и скопируйте их в /backend_static/static/:**
 
     ```bash
     sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
@@ -91,13 +114,13 @@ Kittygram - социальная сеть для обмена фотографи
     sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
     ```
 
-7. На сервере в редакторе nano откройте конфиг Nginx:
+**7. На сервере в редакторе nano откройте конфиг Nginx:**
 
     ```bash
     sudo nano /etc/nginx/sites-enabled/default
     ```
 
-8. Измените настройки location в секции server:
+**8. Измените настройки location в секции server:**
 
     ```bash
     location / {
@@ -106,7 +129,7 @@ Kittygram - социальная сеть для обмена фотографи
     }
     ```
 
-9. Проверьте работоспособность конфига Nginx:
+**9. Проверьте работоспособность конфига Nginx:**
 
     ```bash
     sudo nginx -t
@@ -117,20 +140,21 @@ Kittygram - социальная сеть для обмена фотографи
     nginx: configuration file /etc/nginx/nginx.conf test is successful
     ```
 
-10. Перезапускаем Nginx
+**10. Перезапускаем Nginx:**
     ```bash
     sudo service nginx reload
     ```
 
+---
 ### Настройка CI/CD
 
-1. Файл workflow уже написан. Он находится в директории
+**1. Файл workflow уже написан. Он находится в директории:**
 
     ```bash
     kittygram/.github/workflows/main.yml
     ```
 
-2. Для адаптации его на своем сервере добавьте секреты в GitHub Actions:
+**2. Для адаптации его на своем сервере добавьте секреты в GitHub Actions:**
 
     ```bash
     DOCKER_USERNAME                # имя пользователя в DockerHub
@@ -143,14 +167,15 @@ Kittygram - социальная сеть для обмена фотографи
     TELEGRAM_TO                    # id телеграм-аккаунта (можно узнать у @userinfobot, команда /start)
     TELEGRAM_TOKEN                 # токен бота (получить токен можно у @BotFather, /token, имя бота)
 
+---
 ##  Как работать с репозиторием финального задания
 
+---
 ## Что нужно сделать
-
 Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
 
+---
 ## Как проверить работу с помощью автотестов
-
 В корне репозитория создайте файл tests.yml со следующим содержимым:
 ```yaml
 repo_owner: ваш_логин_на_гитхабе
@@ -163,17 +188,17 @@ dockerhub_username: ваш_логин_на_докерхабе
 
 Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
 
+---
 ## Чек-лист для проверки перед отправкой задания
-
 - Проект Taski доступен по доменному имени, указанному в `tests.yml`.
 - Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
 - Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
 - В корне проекта есть файл `kittygram_workflow.yml`.
 
+---
 ## Автор
+[Aleksey Kazikov](https://github.com/KazikovAP)
 
-Aleksey Kazikov
-
+---
 ## Лицензия
-
 [MIT](https://opensource.org/licenses/MIT)
