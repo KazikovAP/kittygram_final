@@ -1,5 +1,5 @@
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
-[![nodejs](https://img.shields.io/badge/-nodejs-464646?style=flat-square&logo=nodejs)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/-Node.js-464646?style=flat-square&logo=Node.js)](https://nodejs.org/)
 [![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/)
 [![Django REST Framework](https://img.shields.io/badge/-Django%20REST%20Framework-464646?style=flat-square&logo=Django%20REST%20Framework)](https://www.django-rest-framework.org/)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-464646?style=flat-square&logo=PostgreSQL)](https://www.postgresql.org/)
